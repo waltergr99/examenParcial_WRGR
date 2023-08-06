@@ -10,13 +10,14 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
     <body>
-
+        
         <ul id="navbar" >
             <li><a href="default.asp">Home</a></li>
             <li><a href="login">Productos</a></li>
             <li><a href="contact.asp">Contact</a></li>
             <li><a href="registroTienda">Registro Tiendas</a></li>
-          </ul>
+        </ul>
+        <h1 style="text-align: center"> Lista de Productos</h1>
         <form method="post" action="{% url 'productos:ingresoProducto' %}">
             {% csrf_token %}
             <button class="btn btn-success m-5" data-bs-toggle="modal" data-bs-target="#nuevoCurso">Agregar Producto <i class="fas fa-save fa-sm fa-fw"></i></button>
@@ -34,14 +35,25 @@
                                 <div class="modal-body">
                                     <div class="row form-group justify-content-center mb-3">
                                         <div class="col-5">
-                                            <label>Nombre del curso</label>
+                                            <label>Nombre</label>
                                             <input class="form-control" type="text" name="nombreProducto" required>
                                         </div>
-                                        <div class="col-5">
-                                            <label>Ingrese su apellido</label>
+                                        <div class="col">
+                                            <label>Descripcion</label>
                                             <input class="form-control" type="text" name="descripcionProducto">
                                         </div>
-                                        
+                                        <div class="col-5">
+                                            <label>Codigo</label>
+                                            <input class="form-control" type="text" name="codigoProducto">
+                                        </div>
+                                        <div class="col">
+                                            <label>Precio</label>
+                                            <input class="form-control" type="text" name="precioProducto">
+                                        </div>
+                                        <div class="col">
+                                            <label>Cantidad</label>
+                                            <input class="form-control" type="text" name="cantidadProducto">
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -59,7 +71,6 @@
         </form>
         <div class="mt-5 container">
             <div class="row justify-content-center">
-                <h1 style="text-align: center"> Lista de Productos</h1>
                 <div class="col-12">
                     <table class="table table-bordered">
                         <thead style="background-color: #0f94bd; color: white">
@@ -74,13 +85,13 @@
                         <tbody  >
                             {% for usuario in listaUsuarios %}
                             <tr >
-                                <td>{{ usuario.nombreProducto }}</td>
+                                <td class="text-center" >{{ usuario.nombreProducto }}</td>
                                 <td>{{ usuario.descripcionProducto }}</td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                                <td class="text-center"></td>
-                                <td class="text-center"><button><a class="btn btn-danger " >eliminar <i class="fa-solid fa-edge "></a></button></td>
+                                <td class="text-center">{{ usuario.codigoProducto }}</td>
+                                <td class="text-center">{{ usuario.precioProducto }}</td>
+                                <td class="text-center">{{ usuario.cantidadProducto }}</td>
+                                <td class="text-center"><a class="btn btn-info"> <i class="fa-solid fa-eye "></a></td>
+                                <td class="text-center"><a class="btn btn-danger " ><i class="fa-solid fa-trash "></a></td>
                             </tr>
                             {% endfor %}
                         </tbody>

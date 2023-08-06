@@ -14,9 +14,15 @@ def ingresoProducto(request):
     if request.method == 'POST':
         nombreProducto = request.POST.get('nombreProducto')
         descripcionProducto = request.POST.get('descripcionProducto')
+        codigoProducto = request.POST.get('codigoProducto'),
+        precioProducto = request.POST.get('precioProducto'),
+        cantidadProducto = request.POST.get('cantidadProducto')
         infoProductos.objects.create(
             nombreProducto=nombreProducto,
-            descripcionProducto=descripcionProducto
+            descripcionProducto=descripcionProducto,
+            codigoProducto=codigoProducto,
+            precioProducto=precioProducto,
+            cantidadProducto=cantidadProducto 
             )
         return HttpResponseRedirect(reverse('productos:ingresoProducto'))
     return render(request,'ingresoProducto.html',{
@@ -27,9 +33,15 @@ def registroTienda(request):
     usuarioSesion = infoProductos.objects.get(id=2)
     if request.method == 'POST':
         nombreCurso = request.POST.get('nombreCurso')
+        direccionCurso = request.POST.get('direccionCurso')
+        provinciaCurso = request.POST.get('provinciaCurso')
+        regionCurso = request.POST.get('regionCurso')
         fechaInicio = request.POST.get('fechaCurso')
         cursoInfo.objects.create(
             nombre=nombreCurso,
+            direccionCurso=direccionCurso,
+            provinciaCurso=provinciaCurso,
+            regionCurso=regionCurso,
             fechaInicio=fechaInicio
         )
         return HttpResponseRedirect(reverse('productos:registroTienda'))

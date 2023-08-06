@@ -37,14 +37,20 @@
                     <table class="table table-bordered">
                         <thead style="background-color: #0f94bd; color: white; text-align: center">
                             <th>Nombre</th>
-                            <th>Fecha Inicio</th>
-                            <th>Ver inscritos</th>
-                            <th>Eliminar curso</th>
+                            <th>Direccion</th>
+                            <th>Provincia</th>
+                            <th>Region</th>
+                            <th>Fecha de Creación</th>
+                            <th>Ver Productos</th>
+                            <th>Eliminar Tienda</th>
                         </thead>
                         <tbody >
                             {% for curso in cursosTotales %}
                             <tr  >
                                 <td>{{ curso.nombre }}</td>
+                                <td>{{ curso.direccion}}</td>    
+                                <td>{{ curso.provincia}}</td>
+                                <td>{{ curso.region}}</td>
                                 <td>{{ curso.fechaInicio }}</td>
                                 <td class="text-center" ><a class="btn btn-info " href="{% url 'productos:verEstudiantes' curso.id %}"><i class="fa-solid fa-eye "></a></td>
                                <td class="text-center"><button><a class="btn btn-danger " href="{% url 'productos:eliminarCurso' curso.id %}">eliminar</a></button></td>
@@ -65,16 +71,28 @@
             <form method="post" action="{% url 'productos:registroTienda' %}">
                 {% csrf_token %}
                 <div class="modal-header">
-                    <h5 class="modal-title">Crear curso</h5>
+                    <h5 class="modal-title">Crear Tienda</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row form-group justify-content-center mb-3">
-                        <div class="col-5">
-                            <label>Nombre del curso</label>
+                        <div class="col-8">
+                            <label>Nombre </label>
                             <input class="form-control" type="text" name="nombreCurso" required>
                         </div>
-                        <div class="col-5">
+                        <div class="col-8">
+                            <label>Direccion</label>
+                            <input class="form-control" type="text" name="direccionCurso" required>
+                        </div>
+                        <div class="col-8">
+                            <label>Provincia</label>
+                            <input class="form-control" type="text" name="provinciaCurso" required>
+                        </div>
+                        <div class="col-8">
+                            <label>Region</label>
+                            <input class="form-control" type="text" name="regionCurso" required>
+                        </div>
+                        <div class="col-8">
                             <label>Fecha de inicio</label>
                             <input class="form-control" type="date" name="fechaCurso" required>
                         </div>
@@ -82,7 +100,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Crear curso</button>
+                    <button type="submit" class="btn btn-primary">Crear Tienda</button>
                 </div>
             </form>
         </div>
