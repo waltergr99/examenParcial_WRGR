@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Primer template de Django</title>
-        <link rel="stylesheet" href="{% static 'ingresoUsuario/index.css' %}">
+        <title>Examen Parcial</title>
+        <link rel="stylesheet" href="{% static 'ingresoProducto/index.css' %}">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,11 +13,11 @@
 
         <ul id="navbar" >
             <li><a href="default.asp">Home</a></li>
-            <li><a href="news.asp">News</a></li>
+            <li><a href="login">Productos</a></li>
             <li><a href="contact.asp">Contact</a></li>
-            <li><a href="template/registroCursos.html">Registro Tiendas</a></li>
+            <li><a href="registroTienda">Registro Tiendas</a></li>
           </ul>
-        <form method="post" action="{% url 'productos:ingresoUsuario' %}">
+        <form method="post" action="{% url 'productos:ingresoProducto' %}">
             {% csrf_token %}
             <button class="btn btn-success m-5" data-bs-toggle="modal" data-bs-target="#nuevoCurso">Agregar Producto <i class="fas fa-save fa-sm fa-fw"></i></button>
             
@@ -35,11 +35,11 @@
                                     <div class="row form-group justify-content-center mb-3">
                                         <div class="col-5">
                                             <label>Nombre del curso</label>
-                                            <input class="form-control" type="text" name="nombreUsuario" required>
+                                            <input class="form-control" type="text" name="nombreProducto" required>
                                         </div>
                                         <div class="col-5">
                                             <label>Ingrese su apellido</label>
-                                            <input class="form-control" type="text" name="apellidoUsuario">
+                                            <input class="form-control" type="text" name="descripcionProducto">
                                         </div>
                                         
                                     </div>
@@ -65,16 +65,22 @@
                         <thead style="background-color: #0f94bd; color: white">
                             <th>Nombre Producto</th>
                             <th>Descripcion</th>
+                            <th>Codigo</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
                             <th>Ver inscritos</th>
                             <th>Eliminar curso</th>
                         </thead>
                         <tbody  >
                             {% for usuario in listaUsuarios %}
                             <tr >
-                                <td>{{ usuario.nombreUsuario }}</td>
-                                <td>{{ usuario.apellidoUsuario }}</td>
+                                <td>{{ usuario.nombreProducto }}</td>
+                                <td>{{ usuario.descripcionProducto }}</td>
                                 <td class="text-center"></td>
                                 <td class="text-center"></td>
+                                <td class="text-center"></td>
+                                <td class="text-center"></td>
+                                <td class="text-center"><button><a class="btn btn-danger " >eliminar <i class="fa-solid fa-edge "></a></button></td>
                             </tr>
                             {% endfor %}
                         </tbody>

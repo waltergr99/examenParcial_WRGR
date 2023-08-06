@@ -29,13 +29,13 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='infoUsuarios',
+            name='infoProductos',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('nombreUsuario', models.CharField(blank=True, max_length=32, null=True)),
-                ('apellidoUsuario', models.CharField(blank=True, max_length=32, null=True)),
-                ('nroCelular', models.CharField(blank=True, max_length=32, null=True)),
-                ('cursoUsuario', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='productos.cursoinfo')),
+                ('nombreProducto', models.CharField(blank=True, max_length=32, null=True)),
+                ('descripcionProducto', models.CharField(blank=True, max_length=32, null=True)),
+                ('cantidadProducto', models.CharField(blank=True, max_length=32, null=True)),
+                ('productoTienda', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='productos.cursoinfo')),
                 ('direccionInfo', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='productos.direccionusuario')),
             ],
         ),

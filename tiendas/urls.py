@@ -5,5 +5,6 @@ app_name = 'tiendas'
 urlpatterns = [
     path('',views.index,name='index'),
     path('pucp-django',views.ejemplo,name='ejemplo'),
-    path('cetam-django',views.cetam,name='cetam')
+    path('cetam-django',views.cetam,name='cetam'),
+    path('eliminarCurso/<str:idTienda>',views.eliminarProducto,name='eliminarCurso'),
 ]

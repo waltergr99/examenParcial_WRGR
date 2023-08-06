@@ -5,8 +5,8 @@ app_name = 'productos'
 
 urlpatterns = [
     path('inicio',views.inicio,name='inicio'),
-    path('login',views.ingresoUsuario,name='ingresoUsuario'),
-    path('registroCursos',views.registroCursos,name='registroCursos'),
+    path('login',views.ingresoProducto,name='ingresoProducto'),
+    path('registroTienda',views.registroTienda,name='registroTienda'),
     path('eliminarCurso/<str:idCurso>',views.eliminarCursos,name='eliminarCurso'),
     path('asignarCurso',views.asignarCurso,name='asignarCurso'),
     path('verEstudiantes/<str:idCurso>',views.verEstudiantes,name='verEstudiantes')
